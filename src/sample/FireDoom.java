@@ -54,7 +54,7 @@ public class FireDoom extends Application {
             Color.rgb(255, 255, 255), // 36
     };
 
-    private int fireWidth = 50, fireHeight = 50;
+    private int fireWidth = 100, fireHeight = 60;
 
     private List<Integer> firePixelsArray = new ArrayList<>();
 
@@ -97,8 +97,8 @@ public class FireDoom extends Application {
         }
     }
 
-    private final double sizePixel = 10;
-    private final double spacing = 1;
+    private final double sizePixel = 5;
+    private final double spacing = 1; // space pixel
 
     public void renderFire() {
 
@@ -111,7 +111,7 @@ public class FireDoom extends Application {
     }
 
     private Rectangle createCell(int r, int c) {
-        Rectangle rectangle = new Rectangle((sizePixel * c *spacing), (sizePixel * r * spacing), sizePixel, sizePixel);
+        Rectangle rectangle = new Rectangle((sizePixel * c * spacing), (sizePixel * r * spacing), sizePixel, sizePixel);
         rectangle.setFill(Color.WHITE);
 
         return rectangle;
@@ -157,7 +157,7 @@ public class FireDoom extends Application {
         pane = new Pane();
         pane.setStyle("-fx-background-color: black;");
 
-        Scene scene = new Scene(pane, fireWidth * 10, fireHeight * 10);
+        Scene scene = new Scene(pane, fireWidth * sizePixel, fireHeight * sizePixel);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Doom Fire!!!");
         primaryStage.setOnCloseRequest(event -> threadRender.cancel());
